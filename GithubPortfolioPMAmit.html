@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amit S. Shinde - Product Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7; /* Improved default line height for better readability */
+            color: #333; /* Slightly darker default text color for better contrast */
+        }
+        .container {
+            max-width: 1200px; /* Increased max-width for larger screens */
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 0 auto;
+        }
+        header {
+            background-color: #4f46e5;
+            color: white;
+            padding-top: 32px; /* Increased header padding */
+            padding-bottom: 32px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3rem; /* Larger heading for impact */
+            font-weight: 700;  /* Use 700 for a bolder heading */
+            margin-bottom: 12px;
+        }
+        header p {
+            font-size: 1.25rem;
+            margin-bottom: 24px; /* Increased spacing below header paragraph */
+            font-weight: 400; /* Use regular weight for the description */
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease; /* Smooth transition for hover effects */
+        }
+        header a:hover {
+            color: #d9d9d9;
+        }
+        .section {
+            padding-top: 80px; /* Increased section padding */
+            padding-bottom: 80px;
+            text-align: center;
+        }
+        .section h2 {
+            font-size: 2.5rem; /* Larger section heading */
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 48px; /* Increased spacing below section heading */
+            text-align: center;
+            letter-spacing: -0.02em; /* Slight negative letter spacing for a modern feel */
+        }
+        .about-me-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px; /* Increased gap */
+            align-items: center;
+        }
+        .about-me-text {
+            font-size: 1.1rem;
+            color: #4b5563;
+            line-height: 1.7;
+            text-align: left;
+            padding-left: 0; /* Reset padding, if any */
+            padding-right: 0;
+        }
+         .about-me-text p {
+            margin-bottom: 24px;
+        }
+
+        .contact-info {
+            margin-top: 24px; /* Increased margin */
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: #4f46e5;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #6366f1;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px; /* Increased gap between project cards */
+            margin-top: 40px; /* Increased margin above project cards */
+        }
+        .project-card {
+            background-color: #f3f4f6;
+            border-radius: 12px; /* Slightly more rounded corners */
+            padding: 32px; /* Increased padding */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
+            text-align: left;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Added transform transition */
+        }
+        .project-card:hover {
+            transform: translateY(-4px); /* Slight lift on hover */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Increased shadow on hover */
+        }
+        .project-card h3 {
+            font-size: 1.85rem; /* Increased font size */
+            color: #4f46e5;
+            margin-bottom: 12px;
+            font-weight: 600; /* Make project title bold */
+            letter-spacing: -0.02em;
+        }
+        .project-card p {
+            font-size: 1.1rem; /* Increased font size */
+            color: #6b7280;
+            margin-bottom: 16px; /* Increased margin */
+        }
+        .project-impact {
+            font-size: 1.1rem;
+            font-weight: 600; /* Make impact statement bold */
+            color: #16a34a;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-top: 40px;
+        }
+        .skills-card {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition:  transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+       .skills-card:hover {
+            transform: translateY(-4px); /* Slight lift on hover */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Increased shadow on hover */
+        }
+        .skills-card h3 {
+            font-size: 1.5rem; /* Increased font size for skill category */
+            font-weight: 600;
+            color: #4f46e5;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .skills-card ul {
+            list-style-type: disc;
+            padding-left: 24px; /* Increased padding */
+            font-size: 1.1rem; /* Increased font size for skills list */
+            color: #6b7280;
+            line-height: 1.7; /* Increased line height for skills list */
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px; /* Increased gap */
+            margin-top: 32px; /* Increased margin */
+            text-align: center;
+            font-size: 1.1rem;
+            color: #6b7280;
+        }
+
+        footer {
+            background-color: #374151;
+            color: white;
+            padding-top: 24px; /* Increased padding */
+            padding-bottom: 24px;
+            text-align: center;
+            font-size: 0.95rem; /* Slightly increased font size */
+            margin-top: 40px;
+        }
+
+        .resume-link{
+          margin-top: 32px;
+          text-align: center;
+        }
+
+        .resume-link a{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px; /* Increased padding */
+            border-radius: 30px; /* More rounded corners */
+            background-color: #4f46e5;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600; /* Use 600 for a semi-bold button */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform */
+            white-space: nowrap;
+            font-size: 1.1rem;
+        }
+
+        .resume-link a:hover {
+            background-color: #4338ca;
+             transform: translateY(-2px);
+        }
+        .lets-connect-btn{
+             display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px; /* Increased padding */
+            border-radius: 30px; /* More rounded corners */
+            background-color: #fff;
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600; /* Use 600 for a semi-bold button */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform */
+            white-space: nowrap;
+            font-size: 1.1rem;
+             border: 2px solid #4f46e5;
+        }
+        .lets-connect-btn:hover{
+             background-color: #f7fafc;
+              transform: translateY(-2px);
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+            header h1{
+                font-size: 3.75rem;
+            }
+            header p{
+                font-size: 1.5rem;
+            }
+            .about-me-content {
+                flex-direction: row;
+                text-align: left;
+            }
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+            .section h2{
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1200px; /* Increased max-width for larger screens */
+            }
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-indigo-600 text-white py-8">
+        <div class="container">
+            <h1>Amit S. Shinde</h1>
+            <p>Product Manager | Sr. QA Engineer | Scrum Professional</p>
+            <div class="contact-info">
+                <a href="mailto:amitshinde08.in@gmail.com">amitshinde08.in@gmail.com</a> |
+                <a href="https://linkedin.com/in/amitsshinde87" target="_blank" rel="noopener noreferrer">linkedin.com/in/amitsshinde87</a>
+            </div>
+            <div class="mt-4">
+                <a href="#contact" class="lets-connect-btn">Let's Connect</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-gray-100 py-10 section">
+        <div class="container">
+            <h2>👋 About Me</h2>
+            <div class="about-me-content">
+                <div class="about-me-text">
+                    <p>
+                        I'm Amit Shinde, a certified Product Manager with a strong foundation in QA and a passion for building user-centric digital products. With 6+ years of experience across industries like e-commerce, fintech, logistics, education, and healthcare, I've led cross-functional teams, owned full product lifecycles, and delivered scalable solutions. I specialize in stakeholder collaboration, market analysis, wireframing, Agile practices, and go-to-market execution.
+                    </p>
+                    <p>
+                        My career spans roles from hands-on testing to leading product strategy, giving me a unique perspective on the entire product development process. I am adept at understanding both the technical and business sides of product management, ensuring that solutions are not only innovative but also feasible and market-ready.
+                    </p>
+                </div>
+            </div>
+            <div class="contact-info">
+                <span>📍 Pune, India</span>
+                 |
+                <a href="mailto:amitshinde08.in@gmail.com">✉️ amitshinde08.in@gmail.com</a> |
+                <a href="https://linkedin.com/in/amitsshinde87" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-10 section">
+        <div class="container">
+            <h2>📌 Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>TIFFA – Thailand Freight Forwarders Cargo Community Platform</h3>
+                    <p><span class="font-semibold">Domain:</span> Fleet Management / Maritime</p>
+                    <p><span class="font-semibold">Role:</span> Product Manager</p>
+                    <p>
+                        Spearheaded the CODEX e-Delivery Order platform, digitizing trade workflows for shipping lines, brokers, and terminals.
+                    </p>
+                    <p class="project-impact">✅ Impact: Reduced manual dependencies and improved cross-party operational efficiency.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Juman – E-commerce Marketplace (KSA)</h3>
+                    <p><span class="font-semibold">Domain:</span> E-commerce</p>
+                    <p><span class="font-semibold">Role:</span> Product Manager</p>
+                    <p>
+                        Developed a full-fledged marketplace with supplier–customer workflows and MADA/SADAD payment integration.
+                    </p>
+                    <p class="project-impact">✅ Impact: Improved sales funnel and transaction speed.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Conkart – NBFC Card Payments Platform</h3>
+                    <p><span class="font-semibold">Domain:</span> Fintech</p>
+                    <p><span class="font-semibold">Role:</span> Product Manager</p>
+                    <p>
+                        Managed credit, debit, and UPI payment integration for IDFC Bank and other NBFCs.
+                    </p>
+                    <p class="project-impact">✅ Impact: Enhanced payment security, streamlined transactions.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>UPLIFT – Multimodal Cargo System</h3>
+                    <p><span class="font-semibold">Domain:</span> Logistics / Freight</p>
+                    <p><span class="font-semibold">Role:</span> Product Manager</p>
+                    <p>
+                        Built an integrated cargo system connecting airports, seaports, transporters, and customs.
+                    </p>
+                    <p class="project-impact">✅ Impact: Increased shipment visibility, reduced redundant data exchange.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>CBT – Computer-Based Test Platform</h3>
+                    <p><span class="font-semibold">Domain:</span> EdTech</p>
+                    <p><span class="font-semibold">Role:</span> Product Manager</p>
+                    <p>
+                        Created a live class + test platform for government exam aspirants with performance analytics.
+                    </p>
+                    <p class="project-impact">✅ Impact: Boosted learner engagement and improved exam readiness.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Catholic Legacy Website (USA)</h3>
+                    <p><span class="font-semibold">Domain:</span> Non-Profit</p>
+                    <p><span class="font-semibold">Role:</span> Product Manager</p>
+                    <p>
+                        Launched a site for submitting funeral forms, wills, and directives for Catholic users.
+                    </p>
+                    <p class="project-impact">✅ Impact: Simplified planning and increased platform reliability.</p>
+                </div>
+                <div class="project-card">
+                    <h3 class="text-xl font-semibold">TrendApp – Video Sharing and Marketplace Platform with Crypto Payments</h3>
+                    <p class="text-gray-600"><span class="font-semibold">Domain:</span> Social Media & Fintech</p>
+                    <p class="text-gray-600"><span class="font-semibold">Role:</span> Product Manager</p>
+                    <p class="text-gray-700">
+                        Orchestrated the launch of a social platform with video sharing, live-streaming, and crypto payments.
+                    </p>
+                     <p class="project-impact">✅ Impact: Elevated user experience by incorporating cutting-edge social and financial features.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="text-xl font-semibold">Jazeera Paints</h3>
+                    <p class="text-gray-600"><span class="font-semibold">Domain:</span> E-commerce</p>
+                    <p class="text-gray-600"><span class="font-semibold">Role:</span> Product Manager</p>
+                    <p class="text-gray-700">
+                        Managed the website development and optimization for Jazeera Paints.
+                    </p>
+                    <p class="project-impact">✅ Impact: Boosted user experience and strengthened the company’s online footprint.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="text-xl font-semibold">Yokohama Tyres E-commerce Platform</h3>
+                    <p class="text-gray-600"><span class="font-semibold">Domain:</span> Automotive / E-commerce</p>
+                    <p class="text-gray-600"><span class="font-semibold">Role:</span> Product Manager</p>
+                    <p class="text-gray-700">
+                        Launched and optimized an e-commerce platform for purchasing high-performance and off-road tyres.
+                    </p>
+                    <p class="project-impact">✅ Impact: Improved customer accessibility and streamlined the purchasing process.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="text-xl font-semibold">Open Doctor</h3>
+                    <p class="text-gray-600"><span class="font-semibold">Domain:</span> Healthcare</p>
+                    <p class="text-gray-600"><span class="font-semibold">Role:</span> Product Manager</p>
+                    <p class="text-gray-700">
+                         Facilitated the development of an online platform for insurance scheduling and healthcare services.
+                    </p>
+                    <p class="project-impact">✅ Impact: Improved patient care coordination and streamlined appointment scheduling.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="text-xl font-semibold">Pearson VUE – E-learning Platform</h3>
+                    <p class="text-gray-600"><span class="font-semibold">Domain:</span> Education Technology</p>
+                    <p class="text-gray-600"><span class="font-semibold">Role:</span> Product Manager</p>
+                    <p class="text-gray-700">
+                        Led the creation of an e-learning platform for certification exams.
+                    </p>
+                    <p class="project-impact">✅ Impact: Elevated exam accessibility and user satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-100 py-10 section">
+        <div class="container">
+            <h2>🛠️ Skills & Tools</h2>
+            <div class="skills-grid">
+                <div class="skills-card">
+                    <h3>Product Strategy & Planning</h3>
+                    <ul>
+                        <li>Roadmapping</li>
+                        <li>MVP Development</li>
+                        <li>Product Vision</li>
+                        <li>Go-To-Market (GTM) Strategy</li>
+                        <li>Pricing Strategy</li>
+                    </ul>
+                </div>
+                <div class="skills-card">
+                    <h3>Agile Product Delivery</h3>
+                    <ul>
+                        <li>Scrum Ceremonies</li>
+                        <li>User Story Mapping</li>
+                        <li>Sprint Planning</li>
+                        <li>Backlog Grooming</li>
+                        <li>Agile Methodologies</li>
+                    </ul>
+                </div>
+                <div class="skills-card">
+                    <h3>UX & Prototyping</h3>
+                    <ul>
+                        <li>Wireframes & User Journeys (Figma, Moqups)</li>
+                        <li>Design Thinking</li>
+                        <li>A/B Testing</li>
+                        <li>User Experience (UX)</li>
+                        <li>Prototyping</li>
+                    </ul>
+                </div>
+                <div class="skills-card">
+                    <h3>Testing & QA</h3>
+                    <ul>
+                        <li>Functional Testing</li>
+                        <li>API Testing</li>
+                        <li>JMeter</li>
+                        <li>Selenium</li>
+                        <li>UAT</li>
+                         <li>Regression Testing</li>
+                         <li>SDLC Practices</li>
+                    </ul>
+                </div>
+                <div class="skills-card">
+                    <h3>Analytics & Collaboration</h3>
+                    <ul>
+                        <li>Google Analytics</li>
+                        <li>SQL</li>
+                        <li>Tableau</li>
+                        <li>Jira, Confluence, Trello</li>
+                        <li>Stakeholder Interviews</li>
+                        <li>Feedback Loops</li>
+                    </ul>
+                </div>
+                <div class="skills-card">
+                    <h3>Other Skills</h3>
+                    <ul>
+                        <li>Product Lifecycle Management (PLM)</li>
+                        <li>Requirements Gathering</li>
+                        <li>Competitive Analysis</li>
+                        <li>Cross-Functional Leadership</li>
+                        <li>Data-Driven Decision-Making</li>
+                        <li>Market Research & Analytics</li>
+                         <li>Business Strategy & Execution</li>
+                         <li>Client Engagement</li>
+                         <li>Risk Management</li>
+                         <li>Compliance (GDPR, PCI-DSS)</li>
+                         <li>Cybersecurity Awareness</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-10 section">
+        <div class="container">
+            <h2>🎓 Certifications</h2>
+             <div class="certifications-grid">
+                <div>PMP® – Project Management Professional</div>
+                <div>PSM I – Professional Scrum Master</div>
+                <div>ISTQB Certified Tester – Foundation Level</div>
+                <div>Certified Product Manager – Simplilearn</div>
+                <div>Digital Product Management – UVA</div>
+                <div>Microsoft Business Analyst Professional</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-100 py-10 section">
+        <div class="container">
+            <h2>📄 Resume & Documents</h2>
+            <div class="resume-link">
+                <a href="your-cv-link.pdf">
+                    📥 Download My Resume (PDF)
+                </a>
+            </div>
+            <div class="resume-link">
+                <a href="https://drive.google.com/file/d/1HLD_8ZEko_SGp3w5_VhDdAqf-g9SHIR2/view?usp=sharing">
+                    🔍 View Case Studies (Google Doc)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="bg-indigo-100 py-10 section">
+        <div class="container">
+            <h2>📞 Let's Connect</h2>
+            <p class="text-gray-700 text-lg mb-4">
+                I'm actively looking for product management opportunities where I can contribute to impactful, scalable digital solutions. Let’s connect to discuss how I can bring value to your team.
+            </p>
+            <div class="contact-info">
+                <p>
+                    Email: <a href="mailto:amitshinde08.in@gmail.com">amitshinde08.in@gmail.com</a>
+                </p>
+                <p>
+                    LinkedIn: <a href="https://linkedin.com/in/amitsshinde87" target="_blank" rel="noopener noreferrer">linkedin.com/in/amitsshinde87</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container">
+            <p>&copy; 2025 Amit S. Shinde. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('a[href="#contact"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
